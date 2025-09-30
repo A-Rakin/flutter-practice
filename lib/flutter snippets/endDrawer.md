@@ -30,63 +30,7 @@
     @override
     Widget build(BuildContext context) {
     return Scaffold(
-    appBar: AppBar(
-    backgroundColor: Colors.blue,
-    title: Text("Invertory App"),
-    titleSpacing: 10,
-    //centerTitle: true,
-    toolbarHeight: 60,
-    toolbarOpacity: 1,
-    elevation: 50,
-    actions: [
-    IconButton(
-    onPressed: () {
-    MySnackBar("comments", context);
-    },
-    icon: Icon(Icons.comment)),
-    IconButton(
-    onPressed: () {
-    MySnackBar("Settings", context);
-    },
-    icon: Icon(Icons.settings)),
-    IconButton(
-    onPressed: () {
-    MySnackBar("Email us", context);
-    },
-    icon: Icon(Icons.email)),
-    IconButton(
-    onPressed: () {
-    MySnackBar("Search for more", context);
-    },
-    icon: Icon(Icons.search)),
-    ],
-    ),
-    floatingActionButton: FloatingActionButton(
-    backgroundColor: Colors.blue,
-    elevation: 10,
-    child: Icon(Icons.add),
-    onPressed: () {
-    MySnackBar("Add New Item", context);
-    },
-    ),
-    bottomNavigationBar: BottomNavigationBar(
-    currentIndex: 1,
-    items: [
-    BottomNavigationBarItem(icon: Icon(Icons.home), label: "Home"),
-    BottomNavigationBarItem(
-    icon: Icon(Icons.contact_emergency), label: "Contact"),
-    BottomNavigationBarItem(
-    icon: Icon(Icons.verified_user), label: "Profile"),
-    ],
-    onTap: (int index) {
-    if (index == 0) {
-    MySnackBar("Home", context);
-    } else if (index == 1) {
-    MySnackBar("Contact", context);
-    } else if (index == 2) {
-    MySnackBar("Profile", context);
-    }
-    }),
+    
     endDrawer: Drawer(
     child: ListView(
     children: [
