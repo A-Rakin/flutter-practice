@@ -26,6 +26,34 @@ class HomeActivity extends StatelessWidget {
         .showSnackBar(SnackBar(content: Text(messege)));
   }
 
+  void _showAlertDialog(BuildContext context) {
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: const Text('Alert Title'),
+          content: const Text('This is the content of the alert dialog.'),
+          actions: <Widget>[
+            TextButton(
+              onPressed: () {
+                Navigator.of(context).pop(); // Close the dialog
+              },
+              child: const Text('Cancel'),
+            ),
+            TextButton(
+              onPressed: () {
+                // Perform an action when 'OK' is pressed
+                print('OK button pressed!');
+                Navigator.of(context).pop(); // Close the dialog
+              },
+              child: const Text('OK'),
+            ),
+          ],
+        );
+      },
+    );
+  }
+
   ButtonStyle buttonStyle = ElevatedButton.styleFrom(
       padding: EdgeInsets.all(10),
       elevation: 10,
@@ -36,56 +64,13 @@ class HomeActivity extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.blue,
-        title: Text("Invertory App"),
-        titleSpacing: 10,
-        //centerTitle: true,
-        toolbarHeight: 60,
-        toolbarOpacity: 1,
-        elevation: 50,
-        actions: [
-          IconButton(
-              onPressed: () {
-                MySnackBar("comments", context);
-              },
-              icon: Icon(Icons.comment)),
-          IconButton(
-              onPressed: () {
-                MySnackBar("Settings", context);
-              },
-              icon: Icon(Icons.settings)),
-          IconButton(
-              onPressed: () {
-                MySnackBar("Email us", context);
-              },
-              icon: Icon(Icons.email)),
-          IconButton(
-              onPressed: () {
-                MySnackBar("Search for more", context);
-              },
-              icon: Icon(Icons.search)),
-        ],
+        title: const Text('Flutter AlertDialog'),
       ),
-      body: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-        children: [
-          TextButton(
-              onPressed: () {
-                MySnackBar("This is Text Button", context);
-              },
-              child: Text('Text Button')),
-          ElevatedButton(
-              style: buttonStyle,
-              onPressed: () {
-                MySnackBar("This is elevated Button", context);
-              },
-              child: Text('Elevated Button')),
-          OutlinedButton(
-              onPressed: () {
-                MySnackBar("This is Outlined Button", context);
-              },
-              child: Text('Outlined Button'))
-        ],
+      body: Center(
+        child: ElevatedButton(
+          onPressed: () => _showAlertDialog(context),
+          child: const Text('Show Alert Dialog'),
+        ),
       ),
     );
   }
