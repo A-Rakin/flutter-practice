@@ -26,35 +26,8 @@ class HomeActivity extends StatelessWidget {
         .showSnackBar(SnackBar(content: Text(messege)));
   }
 
-  void _showAlertDialog(BuildContext context) {
-    showDialog(
-      context: context,
-      builder: (BuildContext context) {
-        return AlertDialog(
-          title: const Text('Alert Title'),
-          content: const Text('This is the content of the alert dialog.'),
-          actions: <Widget>[
-            TextButton(
-              onPressed: () {
-                Navigator.of(context).pop(); // Close the dialog
-              },
-              child: const Text('Cancel'),
-            ),
-            TextButton(
-              onPressed: () {
-                // Perform an action when 'OK' is pressed
-                print('OK button pressed!');
-                Navigator.of(context).pop(); // Close the dialog
-              },
-              child: const Text('OK'),
-            ),
-          ],
-        );
-      },
-    );
-  }
-
   ButtonStyle buttonStyle = ElevatedButton.styleFrom(
+      textStyle: TextStyle(fontSize: 12),
       padding: EdgeInsets.all(10),
       elevation: 10,
       backgroundColor: Colors.green,
@@ -64,13 +37,45 @@ class HomeActivity extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Flutter AlertDialog'),
+        title: Text('Flutter Form'),
       ),
-      body: Center(
-        child: ElevatedButton(
-          onPressed: () => _showAlertDialog(context),
-          child: const Text('Show Alert Dialog'),
-        ),
+      body: Column(
+        mainAxisAlignment: MainAxisAlignment.start,
+        children: [
+          Padding(
+            padding: EdgeInsets.all(10),
+            child: TextField(
+              decoration: InputDecoration(
+                  border: OutlineInputBorder(), label: Text('First Name')),
+            ),
+          ),
+          Padding(
+            padding: EdgeInsets.all(10),
+            child: TextField(
+              decoration: InputDecoration(
+                  border: OutlineInputBorder(), label: Text('Last Name')),
+            ),
+          ),
+          Padding(
+            padding: EdgeInsets.all(10),
+            child: TextField(
+              decoration: InputDecoration(
+                  border: OutlineInputBorder(), label: Text('Email')),
+            ),
+          ),
+          Padding(
+            padding: EdgeInsets.all(10),
+            child: ElevatedButton(
+                style: buttonStyle,
+                onPressed: () {
+                  MySnackBar("Submitted Successfully", context);
+                },
+                child: Text(
+                  "Submit",
+                  textAlign: TextAlign.center,
+                )),
+          ),
+        ],
       ),
     );
   }
