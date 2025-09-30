@@ -61,71 +61,20 @@ class HomeActivity extends StatelessWidget {
               icon: Icon(Icons.search)),
         ],
       ),
-      floatingActionButton: FloatingActionButton(
-        backgroundColor: Colors.blue,
-        elevation: 10,
-        child: Icon(Icons.add),
-        onPressed: () {
-          MySnackBar("Add New Item", context);
-        },
-      ),
-      bottomNavigationBar: BottomNavigationBar(
-          currentIndex: 1,
-          items: [
-            BottomNavigationBarItem(icon: Icon(Icons.home), label: "Home"),
-            BottomNavigationBarItem(
-                icon: Icon(Icons.contact_emergency), label: "Contact"),
-            BottomNavigationBarItem(
-                icon: Icon(Icons.verified_user), label: "Profile"),
-          ],
-          onTap: (int index) {
-            if (index == 0) {
-              MySnackBar("Home", context);
-            } else if (index == 1) {
-              MySnackBar("Contact", context);
-            } else if (index == 2) {
-              MySnackBar("Profile", context);
-            }
-          }),
-      endDrawer: Drawer(
-        child: ListView(
-          children: [
-            DrawerHeader(
-                padding: EdgeInsets.all(0),
-                child: UserAccountsDrawerHeader(
-                  accountName: Text("Abrar Rakin"),
-                  accountEmail: Text("info@gmail.com"),
-                  //currentAccountPicture: Image.network(""),
-                )),
-            ListTile(
-              leading: Icon(Icons.home),
-              title: Text("Home"),
-              onTap: () {
-                MySnackBar("Home for Navigation Drawer", context);
-              },
-            ),
-            ListTile(
-              leading: Icon(Icons.email),
-              title: Text("Email"),
-              onTap: () {
-                MySnackBar("Email for Navigation Drawer", context);
-              },
-            ),
-            ListTile(
-              leading: Icon(Icons.contacts),
-              title: Text("Contact"),
-              onTap: () {
-                MySnackBar("Contact for Navigation Drawer", context);
-              },
-            ),
-            ListTile(
-              leading: Icon(Icons.settings),
-              title: Text("Settings"),
-              onTap: () {
-                MySnackBar("Settings for Navigation Drawer", context);
-              },
-            ),
-          ],
+      body: Container(
+        alignment: Alignment.center,
+        height: 250,
+        width: 250,
+        margin: EdgeInsets.fromLTRB(10, 10, 10, 10),
+        padding: EdgeInsets.all(1),
+        decoration: BoxDecoration(
+          color: Colors.lightGreen,
+          borderRadius: BorderRadius.circular(10),
+          border: Border.all(color: Colors.black, width: 3),
+        ),
+        child: Text(
+          "Pakistani Kurta",
+          style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
         ),
       ),
     );
