@@ -1,8 +1,7 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {
@@ -20,12 +19,18 @@ class MyApp extends StatelessWidget {
 }
 
 class HomeActivity extends StatelessWidget {
-  const HomeActivity({super.key});
+  HomeActivity({super.key});
 
   MySnackBar(messege, context) {
     return ScaffoldMessenger.of(context)
         .showSnackBar(SnackBar(content: Text(messege)));
   }
+
+  ButtonStyle buttonStyle = ElevatedButton.styleFrom(
+      padding: EdgeInsets.all(10),
+      elevation: 10,
+      backgroundColor: Colors.green,
+      foregroundColor: Colors.white);
 
   @override
   Widget build(BuildContext context) {
@@ -62,29 +67,24 @@ class HomeActivity extends StatelessWidget {
         ],
       ),
       body: Row(
-        mainAxisAlignment: MainAxisAlignment.center,
+        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
-          Container(
-            alignment: Alignment.center,
-            height: 100,
-            width: 100,
-            child: Image.network(
-                "https://i.ytimg.com/vi/dnHckWHbpL8/hqdefault.jpg"),
-          ),
-          Container(
-            alignment: Alignment.center,
-            height: 100,
-            width: 100,
-            child: Image.network(
-                "https://i.ytimg.com/vi/dnHckWHbpL8/hqdefault.jpg"),
-          ),
-          Container(
-            alignment: Alignment.center,
-            height: 100,
-            width: 100,
-            child: Image.network(
-                "https://i.ytimg.com/vi/dnHckWHbpL8/hqdefault.jpg"),
-          )
+          TextButton(
+              onPressed: () {
+                MySnackBar("This is Text Button", context);
+              },
+              child: Text('Text Button')),
+          ElevatedButton(
+              style: buttonStyle,
+              onPressed: () {
+                MySnackBar("This is elevated Button", context);
+              },
+              child: Text('Elevated Button')),
+          OutlinedButton(
+              onPressed: () {
+                MySnackBar("This is Outlined Button", context);
+              },
+              child: Text('Outlined Button'))
         ],
       ),
     );
